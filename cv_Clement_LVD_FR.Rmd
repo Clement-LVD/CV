@@ -201,7 +201,7 @@ li { font-family: Arial, sans-serif;
 <div class="container"> 
 <div class="column2"> 
 -  **Data-analyst / ingénieur de recherches. Psycho-sociologue, PhD.** 
--   En savoir + : [https://clement-lvd.github.io/about_me/](https://clement-lvd.github.io/about_me/) 
+-   En savoir + : <a href="https://clement-lvd.github.io/about_me/" target="_blank">À propos de moi</a> 
 - Je suis expérimenté en **programmation en R** (+ 10 ans d'expérience) 
 - Mais aussi en :
   - 🕵 **Conception de recherches** psycho-sociologiques et d'enquêtes
