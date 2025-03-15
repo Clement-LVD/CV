@@ -1,0 +1,449 @@
+---
+title: "Clément LAVERDET"
+# author: "Chargé d'études / ingénieur de recherches"
+# date: "`r Sys.Date()`"
+output: 
+  html_document:
+    self_contained: false
+    md_extensions: -autolink_bare_uris
+---
+
+```{r write-pdf-cv, eval=FALSE, include=FALSE}
+
+# usethis::use_git_config(user.name="Clement-LVD", user.email="clementlvd@gmail.com")
+
+library(pagedown)
+
+doc <- rstudioapi::getActiveDocumentContext()$path
+message("Je vais knitter ", basename(doc) )
+
+rmarkdown::render(input = doc , output_file = "index.html", output_format = "html_document" )  
+
+
+html_file <- gsub(x =  "index.html", pattern =  ".Rmd$", replacement =".html")
+# Imprimer le document HTML en PDF
+# 
+chrome_print(input = html_file,
+              options = list(  margin = c("0cm",  "0cm", "-1cm", "0cm")  # Marges haut, droite, bas, gauche à 0
+, preferCSSPageSize = TRUE    # Utiliser les tailles de page CSS 
+             ), output = "CV_Clement_LVD.pdf")
+
+```
+
+```{r tchoupy-infographie-de-bg, include=FALSE}
+
+if(!file.exists("timeline_logos_employeurs.png")){
+
+require(tidyverse)
+timeline_datas <- tibble::tribble(~annee, ~logo ,
+                              2014, "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logo_of_the_French_Army_%28Armee_de_Terre%29.svg/1152px-Logo_of_the_French_Army_%28Armee_de_Terre%29.svg.png"  ,
+                              
+                     2015, "https://igny.fr/wp-content/uploads/2022/11/blason-2022-gris-250x250.png"     
+                 , 2016, "https://upload.wikimedia.org/wikipedia/fr/thumb/4/48/Unimes-Logo-Horiz.png/1199px-Unimes-Logo-Horiz.png?20220411173924"    
+         , 2021, "https://upload.wikimedia.org/wikipedia/fr/thumb/3/30/Logo_Universit%C3%A9_Gustave_Eiffel_2020.svg/2560px-Logo_Universit%C3%A9_Gustave_Eiffel_2020.svg.png"  
+         , 2024, "https://upload.wikimedia.org/wikipedia/commons/e/e7/Minist%C3%A8re_de_la_Transition_%C3%A9cologique%2C_de_l%27%C3%89nergie%2C_du_Climat_et_de_la_Pr%C3%A9vention_des_risques.png"
+         )
+
+
+# Chargement des bibliothèques nécessaires
+# library(tibble)
+# library(flextable)
+
+# Téléchargement des images localement (si besoin)
+timeline_datas <- timeline_datas %>%
+  mutate(local_logo = sapply(logo, function(x) {
+    # Chemin local temporaire
+    tmp_file <- tempfile(fileext = ".png")
+    download.file(x, tmp_file, mode = "wb")
+    tmp_file
+  }))
+
+# # Création de la flextable
+# timeline_flextable <- flextable(timeline_datas, col_keys = "local_logo" ) %>%
+#   # Ajout des images dans la colonne "local_logo"
+#   mk_par(j = "local_logo", value = as_paragraph(as_image(src = local_logo, width = 1, height = 1)) )%>%
+#   # Mise en forme de la table
+#   # set_header_labels(annee = "Année", logo = "Logo" ) %>%
+#   align(align = "center", part = "all") %>%
+#   autofit()
+
+# Affichage de la flextable
+# timeline_flextable
+
+library(ggplot2)
+library(ggimage) # Pour inclure les images/logos
+library(tibble)  # Pour créer des dataframes facilement
+
+# Création de la timeline avec ggplot
+timeline_plot <- ggplot(timeline_datas, aes(x = 0, y = 0)) +
+   geom_image(aes(image = logo), size = 1, by = "width") +  # Ajout des logos
+  theme_void() +  # Suppression des grilles et axes
+  theme(
+    plot.margin = margin(0, 0, 0, 0),  # Marges du graphique
+    panel.background = element_rect(fill = "white", color = NA)  # Fond blanc
+  )   + facet_wrap(~annee,scales =  "free_y", nrow =  1) 
+
+# Affichage du graphique
+print(timeline_plot)
+
+
+  ggsave("timeline_logos_employeurs.png", height = 2, width =   20, units = "cm")
+  }
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE )
+require(tidyverse)
+```
+
+```{r STYLES-DU-DOCUMENT, echo=FALSE, results='asis'}
+ 
+cat("
+<style> 
+
+@page {
+    margin: 0!important;
+    margin-top: 0cm!important;
+    margin-bottom: 0cm!important;
+    margin-left: 1cm!important;
+    margin-right: 1cm!important;
+}
+ 
+body {
+  font-family: Arial, sans-serif;
+  margin: 1px; /* Marges réduites */
+  margin-top: 0px;
+  text-align: justify; /* Justification du texte */
+  font-size: 10.5pt; /* Taille de police de base */
+}
+
+.job {background-color: WhiteSmoke; 
+border-top: 0.1px solid LightGray;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: -2px;
+}
+
+
+.column1 {
+    flex: 0 0 20%; /* Colonne étroite de 20% */
+  padding: 0; /* Pas de padding */
+    border: 1px solid black; /* Bordure noire autour de la colonne */
+margin: 2px;
+  justify-content: flex-start; /* Aligne tout le contenu à gauche */
+}
+
+
+
+
+
+.column2 {font-size: 12pt;
+  flex: 0 0 60%; /* Colonne large de 90% */
+  padding: 0; /* Pas de padding */
+  margin: 0px
+}
+
+
+.column3 {
+    flex: 0 0 50%; /* Colonne étroite de 50% */
+  padding: 0; /* Pas de padding */
+    border: 1px solid grey; /* Bordure noire autour de la colonne */
+margin: 2px;
+  justify-content: flex-start; /* Aligne tout le contenu à gauche */
+}
+
+.column7 {
+    flex: 0 0 40%; /* Colonne étroite de 40% */
+  padding: 0; /* Pas de padding */
+    border: 1px solid grey; /* Bordure noire autour de la colonne */
+margin: 2px;
+  justify-content: flex-start; /* Aligne tout le contenu à gauche */
+}
+
+
+.column8 {
+    flex: 0 0 10%; /* Colonne étroite de 10% */
+  padding: 0; /* Pas de padding */
+    border: 1px solid grey; /* Bordure noire autour de la colonne */
+margin: 2px;
+  justify-content: flex-start; /* Aligne tout le contenu à gauche */
+}
+ 
+h2 { font-size: 14pt;
+text-align: left;
+font-weight:bold;
+margin-top: 10px; 
+  color: #2c3e50; 
+}
+
+ul { /*list-style-type: '⏩';*/
+   list-style-type: none; 
+  padding: 0; 
+}
+
+li { font-family: Arial, sans-serif;
+  margin: 1px; /* Marges réduites */
+  padding-left: 2px;
+  text-align: justify; /* Justification du texte */
+  font-size: 8.5pt; /* Taille de police de base */
+}
+  
+</style>
+")
+
+```
+ 
+ 
+<div class="container"> 
+<div class="column2"> 
+-  **Data-analyst / ingénieur de recherches. Psycho-sociologue, PhD.** 
+-   
+- Je suis expérimenté en **programmation en R** (+ 10 ans d'expérience) 
+- Mais aussi en :
+  - 🕵 **Conception de recherches** psycho-sociologiques et d'enquêtes
+  - 💻 **Analyses de données programmées** quantitatives et qualitatives
+  - 📑 **Restitutions** (rapports programmés, articles, conférences, etc.)
+
+<!--
+- Actuellement Chef de la division des logements neufs, au sein du Bureau des Statistiques sur le Logement et la Construction du Commissariat Général au Développement Durable-->
+
+</div>
+<!-- une autre colonne de largeur 16% -->
+<div class="column1"> 
+-  Analyses de données :  
+- 📝 Enquêtes
+- 📰 Textes
+- 🗺 Cartes
+-  ❄ Réseaux de relations
+- 💾 Bases de données 
+- 🔌 Capteurs, etc.
+
+</div>
+
+<div class="column1">
+
+- 📞 **06 33 22 31 65** 
+- **clementlvd\@gmail.com**
+- 🎂 `r floor(as.numeric(difftime(Sys.Date(), as.Date("1990-07-11"), units = "days")) / 365.25)` ans  
+- 🏡 Bièvres - 91570
+- 🚗 Permis + Véhicule
+- 💂 Anglais (📖, ✍️, 🗣️)
+
+
+</div>
+
+
+</div>
+
+```{r textes, eval=FALSE, include=FALSE}
+cat("
+Ainsi, je réalise :
+
+- la refonte intégrale des méthodes de l'enquête ECLN (p. ex. modifications des formulations, re-organisation du travail, refonte des publications trimestrielles, ajout de nouveaux territoires et nouvelles formes de ventes immobilières dans le champ de l'enquête),
+- le pilotage de l'enquête au quotidien, incluant le management d'une équipe d'environ 80 personnes (management effectué *via* les chefs de pôle qui gèrent les gestionnaires et les enquêteurs), 
+- les publications trimestrielles et les réponses aux demandes en analyses de données (p. ex. bilan des achats de logements sociaux pour le compte du gouvernement, retour sur les données personnelles pour la CNIL, etc.)
+- les payes des enquêteurs (environ 50 personnes)
+- les poursuites des promoteurs immobiliers en non-réponse (31 promoteurs poursuivis en 2024),
+- l'organisation des séminaires et conférences (p. ex. formation des nouveaux arrivants à l'INSEE en ce qui concerne l'analyse du marché immobilier [...] et organisation du séminaire des équipes de l'enquête ECLN)
+- [...] 
+
+Rôle de * Lead Developer* en langage R + divers langages inter-opérants : 
+
+- Administrateur Cerbère du niveau national en ce qui concerne la base de données ECLN2 et le suivi de la commercialisation des logements neufs par le ministère, j'assure l'intégralité de la refonte des outils de production statistique et de pilotage de l'enquête ECLN (p. ex. plusieurs applications déployées en 2024 : publipostage relatif à l'enquête ECLN [+ de 600 lettres par trimestres], de réalisation des publications trimestrielles [2 articles écrits par trimestre + des notes sur des détails statistiques], application de calcul des payes, de déclenchement des procédures de contentieux, etc.)
+")
+
+```
+
+
+## 💼 Parcours professionnel 
+
+<img src="timeline_logos_employeurs.png" style="display: flex; margin: 0;width: 100%; height: 70%" />
+
+**💼 Depuis Janvier 2024** : <b>Chef de la division des logements neufs - *Ministère de la transition écologique*</b>
+
+- ⏩ **Direction de l'enquête ECLN de suivi trimestriel de la commercialisation des logements neufs** 
+  -   🤴 Supervision de l'enquête ECLN et d'une équipe de 3 chefs de pôles, 12 gestionnaires et 65 enquêteurs
+  -   📝 Réalisation des publications trimestrielles du CGDD sur la commercialisation des logements neufs^[p. ex. chaque trimestre : publications d'indices comme l'indice du prix des logements neufs + 2 articles pour la presse et le site internet du ministère + notes sur le redressement ou la non-réponse à l'enquête + des jeux de données agrégés et secrétisés en *open-data*] 
+  -   🕵 Ajustements méthodologiques et réponse aux demandes en analyses de données^[p. ex. pour fournir des détails aux équipes [...] et analyser des données sensibles, comme le bilan du respect des engagements de l'État en matière d'acquisition de logements sociaux] 
+  -   🐙 Et autres tâches de gestion de l'équipe et de l'enquête (animation de séminaires, conférences, veille, etc.)
+
+- ⏩ **Role de 1^er^ méthodologiste et *lead-dev'* ** (création, déploiement et maintien d'applications, principalement en R)
+  -   👮 Contrôles sur la base ECLN2 et mise en place de procédures pour les équipes, réponse aux demandes, etc.
+  -   👷 Refonte intégrale des outils ministériels relatifs à ECLN + amélioration des méthodes et automatisation^[p. ex. mise en place d'un module automatisé d'accès aux donénes, de procédures de contentieux automatisées, publications trimestrielles automatisées, déclenchement automatisé des payes et augmentation de la transparence envers les équipes] 
+
+<div class='job'>
+**💼 2021 - 2023** :  <b>Chargé d'un projet de recherches - CDD 15 mois - *Univ. Gustave Eiffel (Versailles)*</b> 
+
+- ⏩ Analyses d'enquêtes, de littérature et de bases de données sur les accidents routiers (p. ex. base d'accidents recensés par la police)
+- ⏩ Rédacteur du rapport ministériel INTEREDP, publication scientifique et présentations en conférences internationales^[p. ex. présentation à la conférence de l'OCDE de bilan des accidents de la circulation en 2022 : www.itf-oecd.org/sites/default/files/repositories/typology_of_risky_situations.pdf]
+</div>
+ 
+<div class='job'>
+**💼 2016 - 2020** : <b>Chargé d'enseignements et doctorant contractuel - CDD 3 ans - *UNÎMES*</b>
+
+- ⏩ Enseignements de niveaux licence à Master (psycho-sociologie, méthodes expérimentales, analyses statistiques)
+- ⏩ Recherches portant sur les méthodes d'un bilan des communications pendant les crises (p. ex. analyse de Facebook)
+</div>
+
+<div class='job'>
+**💼 2015** : <b>Chargé d'études - *Research internship* 8 mois - *Mairie d'Igny*</b>
+  
+  - ⏩ Mesure de l'influence intergénérationnelle  avant & après une intervention en milieu scolaire *(enseignants → enfants → parents)*
+  - ⏩ Bilan des éco-gestes réalisés par un panel d'habitants et aide au design de préventions adaptées
+</div>
+
+<div class='job'>
+**💼 2014** : <b>Chargé d'études RH - CDD 4 mois - *DRH de l'Armée de Terre*</b>
+
+  - ⏩ Analyses de la base de recrutement (p. ex. qualité psychométrique des tests, facteurs conduisant à la démission des soldats)
+</div>
+</div>
+
+<div class="container"> 
+<div class="column3"> 
+
+## 🎓 Formations
+- **2024 - INSEE** : Redressements statistiques (p. ex. non-réponse, secrétisation, désaisonnalisation) 
+- **2022 - Stanford University via edx.org**^[lien vers le certificat : https://courses.edx.org/certificates/07dd917be3654e058599574b3a1fa40e] : Bases de données et SQL 
+- **2021 - ED583 [UNÎMES & IMT Alès]** : Doctorat en psychosociologie
+- **2015 - Univ. Paris V** : Psychologue social et environnemental 
+-  
+- **2008 à 2015** : Carrière d'artisan - tous corps d'état *(expérimenté en montages électriques, menuiserie, maçonnerie, etc.)* 
+
+</div>
+
+<div class="column7">
+
+## 💻 Programmation
+
+```{r flextable-competences, echo=FALSE}
+
+#la fonction broute une table de 3 colonnes (!!) 
+# 1) Le nom d'un langage (nom = nom de la colonne)
+# 2) Le niveau de compétences dans la 2nde colonne !
+# ET DU TEXTE LIBVRE DANS LA TROISIEME TOUTE RIQUIQUI !
+
+CREER_FLEXTABLE <- function(dataa, lignes_sous_table = NULL){
+# et boum elle réponds un flextable standard
+
+ft <- flextable::flextable(dataa, cwidth = c(1,1.5, 1 ))
+
+# Applique une barre de progression à la colonne "Compétences" en utilisant minibar
+ft <- flextable::compose(ft, j = 2,
+              
+              value = as_paragraph( lollipop( width = 1,
+                                              value = datas$Compétence, 
+                                           max = 5)))
+  
+ ft <- flextable::fontsize(ft, part = "all", size = 9)
+ 
+ ft <- flextable::align(ft, j =    2 , part = "header", align = "right" ) %>% 
+   
+   flextable::bold(j = 1, part = "all") %>%  
+   
+   flextable::align(part = "all", j = c(1 , 3), align = "center") %>%
+   
+   flextable::merge_h(part = "body")
+ 
+ # return(ft)
+ 
+ if(!is.null(lignes_sous_table) ){
+   
+   ft <- flextable::add_footer_lines(ft, values = lignes_sous_table) %>%
+     
+     flextable::fontsize(part = "footer", size = 8) %>% flextable::align(part = "footer", align = "justify")
+ }
+ 
+ft <- flextable::line_spacing(ft, space = 0.85, part = "all") %>%
+  flextable::padding(padding = 0.75, part = "all") 
+   
+    
+ 
+ return(ft)
+}
+
+# et on fait une table :
+  
+
+
+datas <- tibble::tribble(~Language, ~Compétence, ~Expérience, ~Remarques,
+                         
+ "R & Rstudio",   4.7, 2013,  ""
+ 
+, "Rshiny" , 4.2, 2020,  ""
+
+,  "REGEX", 4.2, 2016, ""
+
+, "SQL", 4, 2020 , ""
+
+,  "HTML / CSS",  4, 2016, ""
+
+, "Git", 4, 2015, ""
+
+, "Python", 3, 2016, ""
+
+# ceux qui ont des remarques vont être présentés à part  !
+ , "Autres", 2.7, 2016, "Autres langages : bonnes notions de C (rcpp), Java (rjava), Linux [...] GO, etc.",
+
+"Suite Microsoft", 4.8, 2010, "Suite Microsoft : utilisateur avancé (p. ex. Excel + PowerQuery, PowerBi et PowerPivot)"
+
+
+) %>% mutate(Expérience = paste0(year(today()) - Expérience, " ans") )
+
+datas_avec_remarques <- filter(datas, nchar(Remarques) > 0)
+datas  <- filter(datas, !nchar(Remarques) > 0) %>% select(-Remarques)
+
+
+suppressWarnings({suppressMessages({
+  pacman::p_load(flextable) 
+CREER_FLEXTABLE(datas    ,    lignes_sous_table = "Suite Microsoft : connaissance de commandes systèmes et Powershell et usages avancés des logiciels (p. ex. Excel + PowerQuery, PowerBi et PowerPivot)"
+                )
+}) })
+ 
+# - et connaissance de logiciels (p. ex. Cytoscape et Gephi pour l'analyse de réseaux de relations ; SAS, Statistica et SPSS pour les analyses statistiques)
+
+```
+
+
+</div> 
+- Bonnes notions de :
+  - C++ 
+  - (& rcpp)  
+  - Java
+  - (& rjava)  
+  - Linux 
+  - SAS [...]
+  - et d'autres logiciels (Cytoscape, SPSS, Statistica, JDMetra, etc.)
+</div>
+
+\pagebreak
+
+----
+
+## ⣿ Principales publications scientifiques
+  
+- 🧾 Electric Personal Mobility Device Driver Behaviors, Their Antecedents and Consequences: A Narrative Review, *in* *Journal of Safety Research, Volume 87* (2023). https://doi.org/10.1016/j.jsr.2023.07.006
+
+- 🕮 'Crisis' (Chapitre), *in* 100 Key Concepts in Environmental Psychology, pp. 28-30, Routledge / Taylor & Francis (2023)
+
+- 🕮 'Crises' (Chapitre), *in* Psychologie environnementale : 100 notions clés, pp. 74-77, *Univers Psy* / Dunod. (2022) EAN: 9782100828289
+
+- 🕮 Relations publiques et exploitation des réseaux sociaux numériques en gestion des crises : quels rôles de Facebook pour les gestionnaires français et comment exploiter ce canal de façon pertinente ? (Thèse), *PUF* (2021) https://tel.archives-ouvertes.fr/tel-03457426/file/74433_LAVERDET_2021_archivage.pdf
+
+- 🕮 Entraînement numérique pour les autorités: qualifier la meilleure façon de communiquer (Chapitre), *in* *Prise de décision en situation de crise: recherche et innovations pour une formation optimale* / Wiley (2019)
+
+
+- 🕮 What is the Best Way to Communicate During a Crisis ? (Chapitre), *in* *Decision‐making in Crisis Situations: Research and Innovation for Optimal Training* / Wiley, pp. 149-173. https://doi.org/10.1002/9781119557869.ch7 (2018)
+
+
+- 🕮 Integrating Anthropocentric Approaches into Flood Risk Management (Chapitre), *in* *Floods - Volume 2 - Risk Management* / ISTE, pp. 157-170. https://doi.org/10.1016/B978‑1‑78548‑269‑4.50011‑1 (2017)
+
+- Et d'autres publications non-scientifiques, comme, entre janvier 2024 et aujourd'hui, les publications trimestrielles du CGDD relatives à la commercialisation des logements neufs [...] et des packages de R comme https://github.com/Clement-LVD/codexplor 
+
+-  
+
+## ⣿ Notes des sections "Parcours professionnel" ou "Formations"
