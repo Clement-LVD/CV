@@ -201,13 +201,13 @@ li { font-family: Arial, sans-serif;
 <div class="container"> 
 <div class="column2"> 
 -  **Data-analyst / ingénieur de recherches. Psycho-sociologue, PhD.** 
--   En savoir + : <a href="https://clement-lvd.github.io/about_me/" target="_blank">À propos de moi</a> 
-- Je suis expérimenté en **programmation en R** (+ 10 ans d'expérience) 
-- Mais aussi en :
-  - 🕵 **Conception de recherches** psycho-sociologiques et d'enquêtes
-  - 💻 **Analyses de données programmées** quantitatives et qualitatives
-  - 📑 **Restitutions** (rapports programmés, articles, conférences, etc.)
-
+- ⏩ Passionné de **programmation en R** (+ 10 ans d'expérience) 
+- ⏩ Expérimenté en :
+  - **Conception de recherches** psychosociologiques et d'enquêtes
+  - **Data-science et analyses** quantitatives et qualitatives
+  - **Restitutions** (rapports programmés, articles, conférences, etc.)
+  - **Travail collaboratif et programmation** <a href=" https://github.com/Clement-LVD" > </a> 
+  
 <!--
 - Actuellement Chef de la division des logements neufs, au sein du Bureau des Statistiques sur le Logement et la Construction du Commissariat Général au Développement Durable-->
 
@@ -265,20 +265,16 @@ Rôle de * Lead Developer* en langage R + divers langages inter-opérants :
 **💼 Depuis Janvier 2024** : <b>Chef de la division des logements neufs - *Ministère de la transition écologique*</b>
 
 - ⏩ **Direction de l'enquête ECLN de suivi trimestriel de la commercialisation des logements neufs** 
+  -   🕵 [Automatisation de l'activité] *Réalisation de programmes en R* pour les publipostages (février 2024), récupérer des données (juin 2024), produire les publications trimestrielles (aout 2024), {..} contrôler la base SQL (janvier 2025), payer les enquêteurs (mars 2025), etc.
   -   🤴 Supervision de l'enquête ECLN et d'une équipe de 3 chefs de pôles, 12 gestionnaires et 65 enquêteurs
-  -   📝 Réalisation des publications trimestrielles du CGDD sur la commercialisation des logements neufs^[p. ex. chaque trimestre : publications d'indices comme l'indice du prix des logements neufs + 2 articles pour la presse et le site internet du ministère + notes sur le redressement ou la non-réponse à l'enquête + des jeux de données agrégés et secrétisés en *open-data*] 
-  -   🕵 Ajustements méthodologiques et réponse aux demandes en analyses de données^[p. ex. pour fournir des détails aux équipes [...] et analyser des données sensibles, comme le bilan du respect des engagements de l'État en matière d'acquisition de logements sociaux] 
-  -   🐙 Et autres tâches de gestion de l'équipe et de l'enquête (animation de séminaires, conférences, veille, etc.)
-
-- ⏩ **Role de 1^er^ méthodologiste et *lead-dev'* ** (création, déploiement et maintien d'applications, principalement en R)
-  -   👮 Contrôles sur la base ECLN2 et mise en place de procédures pour les équipes, réponse aux demandes, etc.
-  -   👷 Refonte intégrale des outils ministériels relatifs à ECLN + amélioration des méthodes et automatisation^[p. ex. mise en place d'un module automatisé d'accès aux donénes, de procédures de contentieux automatisées, publications trimestrielles automatisées, déclenchement automatisé des payes et augmentation de la transparence envers les équipes] 
+  -   📝 Réalisation des publications trimestrielles du CGDD sur la commercialisation des logements neufs
+  -   🐙 Gestion de l'équipe et de l'enquête (animation de séminaires, contentieux, etc.)
 
 <div class='job'>
 **💼 2021 - 2023** :  <b>Chargé d'un projet de recherches - CDD 15 mois - *Univ. Gustave Eiffel (Versailles)*</b> 
 
 - ⏩ Analyses d'enquêtes, de littérature et de bases de données sur les accidents routiers (p. ex. base d'accidents recensés par la police)
-- ⏩ Rédacteur du rapport ministériel INTEREDP, publication scientifique et présentations en conférences internationales^[p. ex. présentation à la conférence de l'OCDE de bilan des accidents de la circulation en 2022 : www.itf-oecd.org/sites/default/files/repositories/typology_of_risky_situations.pdf]
+- ⏩ Analyste et rédacteur du rapport ministériel INTEREDP, publication scientifique et présentations en conférences internationales^[p. ex. présentation à la conférence de l'OCDE de bilan des accidents de la circulation en 2022 : www.itf-oecd.org/sites/default/files/repositories/typology_of_risky_situations.pdf]
 </div>
  
 <div class='job'>
