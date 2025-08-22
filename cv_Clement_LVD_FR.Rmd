@@ -206,7 +206,7 @@ li { font-family: Arial, sans-serif;
   - **Conception de recherches** psychosociologiques et d'enquêtes
   - **Data-science et analyses** quantitatives et qualitatives
   - **Restitutions** (rapports programmés, articles, conférences, etc.)
-  - **Travail collaboratif et programmation** <a href=" https://github.com/Clement-LVD" > </a> 
+  - **Travail collaboratif et programmation** <a href="https://github.com/Clement-LVD"></a> 
   
 <!--
 - Actuellement Chef de la division des logements neufs, au sein du Bureau des Statistiques sur le Logement et la Construction du Commissariat Général au Développement Durable-->
@@ -262,39 +262,40 @@ Rôle de * Lead Developer* en langage R + divers langages inter-opérants :
 
 <img src="timeline_logos_employeurs.png" style="display: flex; margin: 0;width: 100%; height: 70%" />
 
-**💼 Depuis Janvier 2024** : <b>Chef de la division des logements neufs - *Ministère de la transition écologique*</b>
+💼 Depuis Janvier 2024 : **Data-scientist (ou 'attaché confirmé', en language INSEE)** - *Ministère de la transition écologique / Service des Données et Études Statistiques (La Défense)*
 
-- ⏩ **Direction de l'enquête ECLN de suivi trimestriel de la commercialisation des logements neufs** 
-  -   🕵 [Automatisation de l'activité] *Réalisation de programmes en R* pour les publipostages (février 2024), récupérer des données (juin 2024), produire les publications trimestrielles (aout 2024), {..} contrôler la base SQL (janvier 2025), payer les enquêteurs (mars 2025), etc.
-  -   🤴 Supervision de l'enquête ECLN et d'une équipe de 3 chefs de pôles, 12 gestionnaires et 65 enquêteurs
+- ⏩ Chef de la division 'marchés des logements neufs' & direction de l'enquête de suivi de la commercialisation des logements neufs
+  -   🕵 [Automatisation de l'activité] *Réalisation de programmes en R* pour automatiser les contentieux (fév. 2024), la récupération des données (juin 2024), les publications trimestrielles (aout 2024), {..} les contrôles sur la base SQL (janv. 2025), les payes (mars 2025), etc.
+  -   🤴 Gestion de l'enquête et supervision d'une équipe de 3 chefs de pôles, 12 gestionnaires et 65 enquêteurs
   -   📝 Réalisation des publications trimestrielles du CGDD sur la commercialisation des logements neufs
-  -   🐙 Gestion de l'équipe et de l'enquête (animation de séminaires, contentieux, etc.)
 
 <div class='job'>
-**💼 2021 - 2023** :  <b>Chargé d'un projet de recherches - CDD 15 mois - *Univ. Gustave Eiffel (Versailles)*</b> 
+💼 2021 - 2023 : **Data-scientist / Ingénieur de recherches** - *Univ. Gustave Eiffel (Versailles)*
 
-- ⏩ Analyses d'enquêtes, de littérature et de bases de données sur les accidents routiers (p. ex. base d'accidents recensés par la police)
+- ⏩ Analyses sur les accidents routiers (p. ex. base d'accidents recensés par la police, enquêtes et *textes* explicatifs des accidents)
 - ⏩ Analyste et rédacteur du rapport ministériel INTEREDP, publication scientifique et présentations en conférences internationales^[p. ex. présentation à la conférence de l'OCDE de bilan des accidents de la circulation en 2022 : www.itf-oecd.org/sites/default/files/repositories/typology_of_risky_situations.pdf]
 </div>
  
 <div class='job'>
-**💼 2016 - 2020** : <b>Chargé d'enseignements et doctorant contractuel - CDD 3 ans - *UNÎMES*</b>
+💼 2016 - 2020 : **Chargé d'enseignements et doctorant contractuel** -  *UNÎMES*
 
 - ⏩ Enseignements de niveaux licence à Master (psycho-sociologie, méthodes expérimentales, analyses statistiques)
-- ⏩ Recherches portant sur les méthodes d'un bilan des communications pendant les crises (p. ex. analyse de Facebook)
+- ⏩ Recherches sur les méthodes d'un bilan des communications pendant les crises (p. ex. analyses massives via l'API Facebook)
+- ⏩  Restitutions en conférences et organisation d'ateliers en analyses de données ou en communication de crise
 </div>
 
 <div class='job'>
-**💼 2015** : <b>Chargé d'études - *Research internship* 8 mois - *Mairie d'Igny*</b>
+💼 2015 : **Chargé d'études (Research internship)** - *Mairie d'Igny*
   
   - ⏩ Mesure de l'influence intergénérationnelle  avant & après une intervention en milieu scolaire *(enseignants → enfants → parents)*
   - ⏩ Bilan des éco-gestes réalisés par un panel d'habitants et aide au design de préventions adaptées
 </div>
 
 <div class='job'>
-**💼 2014** : <b>Chargé d'études RH - CDD 4 mois - *DRH de l'Armée de Terre*</b>
+💼 2014 : **Chargé d'études RH** - *DRH de l'Armée de Terre*
 
   - ⏩ Analyses de la base de recrutement (p. ex. qualité psychométrique des tests, facteurs conduisant à la démission des soldats)
+  - ⏩ Restitutions (p. ex. notes et présentations à la cours des comptes)
 </div>
 </div>
 
@@ -302,13 +303,13 @@ Rôle de * Lead Developer* en langage R + divers langages inter-opérants :
 <div class="column3"> 
 
 ## 🎓 Formations
+- **2025** : Compilation de programmes en R & domotique KNX
 - **2024 - INSEE** : Redressements statistiques (p. ex. non-réponse, secrétisation, désaisonnalisation) 
-- **2022 - Stanford University via edx.org**^[lien vers le certificat : https://courses.edx.org/certificates/07dd917be3654e058599574b3a1fa40e] : Bases de données et SQL 
+- **2022 - Stanford University**^[lien vers le certificat : https://courses.edx.org/certificates/07dd917be3654e058599574b3a1fa40e] : Bases de données relationnelles et SQL 
 - **2021 - ED583 [UNÎMES & IMT Alès]** : Doctorat en psychosociologie
 - **2015 - Univ. Paris V** : Psychologue social et environnemental 
 -  
-- **2008 à 2015** : Carrière d'artisan - tous corps d'état *(expérimenté en montages électriques, menuiserie, maçonnerie, etc.)* 
-
+- **2008 à 2015** : Artisan TCE (tous corps d'état = expérimenté en montage électrique, menuiserie, maçonnerie, etc.)
 </div>
 
 <div class="column7">
